@@ -138,7 +138,13 @@ public class OperacaoServiceImp implements OperacaoService {
 			return response;
 		}
 		
-		if (request.getValor() <= 0) {
+		if (request.getValor() == 0) {
+			response.setStatusCode(400);
+			response.setMessage("Valor para saque inválido.");
+			return response;
+		}
+		
+		if (request.getValor() < 0) {
 			response.setStatusCode(400);
 			response.setMessage("Valor para saque inválido.");
 			return response;

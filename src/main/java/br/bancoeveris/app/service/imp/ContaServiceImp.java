@@ -1,6 +1,7 @@
 package br.bancoeveris.app.service.imp;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -46,37 +47,31 @@ public class ContaServiceImp implements ContaService {
 
 	public BaseResponse inserir(ContaRequest contaRequest) {
 		Conta conta = new Conta();
-		BaseResponse base = new BaseResponse();
-		base.setStatusCode(400);
-		boolean existe = true;
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setStatusCode(400);
 
-		while (existe == true) {
-			String randomHash = conta.getHash();
-			Conta contaExiste = _repository.findByHash(randomHash);
-
-			if (contaExiste != null)
-				existe = true;
-			else
-				existe = false;
+		UUID uuid = UUID.randomUUID();
+		
+		if (contaRequest.getAgencia().isEmpty()) {
+			
+			baseResponse.setMessage("Favor preencher agência!");
+			return baseResponse;
+		}
+		
+		if (contaRequest.getNumConta().isEmpty()) {
+			
+			baseResponse.setMessage("A conta não foi preenchida!");
+			return baseResponse;
 		}
 
-		if (contaRequest.getNumConta() == "") {
-			base.setMessage("O Número da conta do cliente não foi preenchido.");
-			return base;
-		}
-		if (contaRequest.getAgencia() == "") {
-			base.setMessage("A agencia do cliente não foi preenchido.");
-			return base;
-		}
-
-		conta.setHash(contaRequest.getHash());
-		conta.setNumConta(contaRequest.getNumConta());
-		conta.setAgencia(contaRequest.getAgencia());
+		conta.setHash(uuid.toString());
 
 		_repository.save(conta);
-		base.setStatusCode(201);
-		base.setMessage("Conta inserida com sucesso.");
-		return base;
+
+		baseResponse.setStatusCode(201);
+		baseResponse.setMessage("Hash Gerado automaticamente na Conta criada!!");
+
+		return baseResponse;
 	}
 
 	public Conta obter(Long id) {

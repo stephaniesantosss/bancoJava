@@ -55,26 +55,6 @@ public class ContaController extends BaseController {
 			return ResponseEntity.status(errorBase.getStatusCode()).body(errorBase);
 		}   	
     }
-
-//	@GetMapping
-//    public ResponseEntity listar() {		
-//		try {
-//			ContaList contas = _service.listar();  		
-//	    	return ResponseEntity.status(HttpStatus.OK).body(contas);			
-//		} catch (Exception e) {
-//			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);			
-//		}		
-//    }
-//	
-//	@DeleteMapping(path = "/{id}")
-//	public ResponseEntity deletar(@PathVariable Long id) {
-//		try {
-//			BaseResponse response = _service.deletar(id);
-//			return ResponseEntity.status(response.StatusCode).build(); 
-//		} catch (Exception e) {
-//			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
-//		}
-//	}
 	
 	@PutMapping(path = "/{id}")
 	public ResponseEntity atualizar(@RequestBody ContaRequest contaRequest, @PathVariable Long id) {

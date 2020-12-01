@@ -208,6 +208,7 @@ public class ContaServiceTest {
 			
 			Assertions.assertEquals(response.getStatusCode(), 400);
 		}
+		
 	}
 
 }
