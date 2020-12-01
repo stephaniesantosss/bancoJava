@@ -12,8 +12,8 @@ public class ContaRequest {
 		hash = UUID.randomUUID().toString().substring(0, 16);
 		return hash.replace("-", "");
 	}
-	public String setHash() {
-		return hash;
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 	public String getNumConta() {
 		return numConta;

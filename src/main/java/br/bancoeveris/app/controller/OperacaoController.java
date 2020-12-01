@@ -45,37 +45,6 @@ public class OperacaoController extends BaseController {
 		}
     }
 	
-	
-//	@GetMapping(path = "/{id}")
-//    public ResponseEntity obter(@PathVariable Long id) {		
-//		try {
-//			Operacao response = _service.obter(id);
-//			return ResponseEntity.status(response.StatusCode).body(response);	
-//		} catch (Exception e) {
-//			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
-//		}   	
-//    }
-
-//	@GetMapping
-//    public ResponseEntity listar() {		
-//		try {
-//			OperacaoList operacoes = _service.listar();  		
-//	    	return ResponseEntity.status(HttpStatus.OK).body(operacoes);			
-//		} catch (Exception e) {
-//			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);			
-//		}		
-//    }
-//	
-//	@DeleteMapping(path = "/{id}")
-//	public ResponseEntity deletar(@PathVariable Long id) {
-//		try {
-//			BaseResponse response = _service.deletar(id);
-//			return ResponseEntity.status(response.StatusCode).build(); 
-//		} catch (Exception e) {
-//			return ResponseEntity.status(errorBase.StatusCode).body(errorBase);
-//		}
-//	}
-//	
 	@PutMapping(path = "/{id}")
 	public ResponseEntity atualizar(@RequestBody OperacaoRequest operacaoRequest, @PathVariable Long id) {
 		try {

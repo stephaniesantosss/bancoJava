@@ -7,7 +7,6 @@ public class BaseResponse {
 	public BaseResponse() {
 	}
 	public BaseResponse(int statusCode, String message) {
-		super();
 		this.statusCode = statusCode;
 		this.message = message;
 	}
